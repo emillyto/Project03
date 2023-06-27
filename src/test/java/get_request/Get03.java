@@ -1,3 +1,5 @@
+package get_request;
+
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
@@ -6,7 +8,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class Get03 {
-      /*
+     /*
         Given
             https://jsonplaceholder.typicode.com/todos/23
         When
@@ -57,8 +59,6 @@ public class Get03 {
 
 
 
+
     }
-
-
-
 }
