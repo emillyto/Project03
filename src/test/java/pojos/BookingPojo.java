@@ -6,7 +6,6 @@ public class BookingPojo {
     private Integer totalprice;
     private Boolean depositpaid;
     private BookingDatesPojo bookingdates;
-
     private String additionalneeds;
 
     public BookingPojo() {
