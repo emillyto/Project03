@@ -6,6 +6,7 @@ import org.junit.Test;
 import pojos.JsonPlaceHolderPojo;
 
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class Post04 extends JsonBaseHolderUrl {
 
@@ -16,7 +17,7 @@ public class Post04 extends JsonBaseHolderUrl {
 
         // Set the expected Data -Will do it by POJO CLass(Plain Java Object)
         // To do that we will create an Object for JsonPlaceHolderPojo and we will be
-        //able to put a diferent fields as a data
+        //able to put a different fields as a data
        JsonPlaceHolderPojo expectedData= new JsonPlaceHolderPojo(55,"Tidy your room",false);
         System.out.println("expectedData =" + expectedData);
 
@@ -25,10 +26,21 @@ public class Post04 extends JsonBaseHolderUrl {
        response.prettyPrint();
 
        // Do Assertion
+       JsonPlaceHolderPojo actualData= response.as(JsonPlaceHolderPojo.class);// That is Deserialization
+        System.out.println("actualData= " + actualData);
+
+        assertEquals(201,response.statusCode());
+        assertEquals(expectedData.getUserId(),actualData.getUserId());
+        assertEquals(expectedData.getTitle(),actualData.getTitle());
+        assertEquals(expectedData.getCompleted(),actualData.getCompleted());
+
+
+
 
 
 
     }
+
 
 }
  /*
