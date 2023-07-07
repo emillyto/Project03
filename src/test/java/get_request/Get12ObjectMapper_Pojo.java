@@ -52,4 +52,4 @@ public class Get12ObjectMapper_Pojo extends JsonBaseHolderUrl {
 }
 
 
-}
+

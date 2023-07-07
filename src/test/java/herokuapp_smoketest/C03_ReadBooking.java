@@ -11,18 +11,18 @@ import static herokuapp_smoketest.C01_CreateBooking.bookingId;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-public class C02_UpdateBooking extends HerOkuAppBaseUrl {
-    // WE will do Updating with PUT REQuest
+public class C03_ReadBooking extends HerOkuAppBaseUrl {
     /*
-    Given
-        https://restful-booker.herokuapp.com/booking/:id
-      --- IN PUT REQUEST WE NEED 2 GIVENS- ONE IS FOR TH END POINT(URL) AND THE SECOND ONE IS THE BODY THAT
-       IS WHY WE WILL
-      AND KEYWORD
-      AND
-      {
+    Given  https://restful-booker.herokuapp.com/:id
 
-            "firstname" : "Mark",
+        When
+        Send Get request
+        Then
+        Status Code 200
+        And
+        Response body is
+        {
+          "firstname" : "Mark",
             "lastname" : "Twain",
             "totalprice" : 200,
             "depositpaid" : true,
@@ -31,31 +31,14 @@ public class C02_UpdateBooking extends HerOkuAppBaseUrl {
                 "checkout" : "2024-01-01"
             },
             "additionalneeds" : "Dinner"}
-
-    When -THAT IS MEAN ACTION(SEND THE PUT REQUEST)
-    Then
-       Status Code is 200
-
-       And
-
-       Response Body is:
-
-            "firstname" : "Mark",
-            "lastname" : "Twain",
-            "totalprice" : 200,
-            "depositpaid" : true,
-            "bookingdates" : {
-                "checkin" : "2023-01-01",
-                "checkout" : "2024-01-01"
-            },
-            "additionalneeds" : "Dinner"}
-             */
+     */
     @Test
-    public void put01(){
-        // Set the URL
-        spec.pathParams("first","booking","second",bookingId);
+    public void get01(){
+        // SEt the URL
+        spec.pathParams("first","booking","second",
+        bookingId);
 
-        // Set the expected data-
+        // Send the response and get request
         BookingDatesPojo bookingDatesPojo=new BookingDatesPojo("2023-01-01","2024-01-01");
         BookingPojo expectedData= new BookingPojo("Mark","Twain",200,true,
                 bookingDatesPojo,"Dinner");
@@ -80,15 +63,6 @@ public class C02_UpdateBooking extends HerOkuAppBaseUrl {
         assertEquals(bookingDatesPojo.getCheckin(), actualData.getBookingdates().getCheckin());
         assertEquals(bookingDatesPojo.getCheckout(), actualData.getBookingdates().getCheckout());
         assertEquals(expectedData.getAdditionalneeds(), actualData.getAdditionalneeds());
-    }
-
-
-
-
-
-
-
-
 
     }
-
+}

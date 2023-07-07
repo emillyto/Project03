@@ -5,6 +5,9 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
+import static utils.AuthenticationHerOkuApp.generateToken;
+
+
 public class HerOkuAppBaseUrl {
     // This class is created to prevent repeated action in request like Base URL,
     // contain type,authorization etc.
@@ -13,7 +16,10 @@ public class HerOkuAppBaseUrl {
     //Then spec object will be assigned
     public void setUp(){
 
-        spec= new RequestSpecBuilder().setContentType(ContentType.JSON).setBaseUri("https://restful-booker.herokuapp.com").build();
+        spec= new RequestSpecBuilder().
+                addHeader("Cookie","token="+generateToken()).
+                setContentType(ContentType.JSON).
+                setBaseUri("https://restful-booker.herokuapp.com").build();
 
     }
 }
