@@ -5,9 +5,7 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 
-import static utils.AuthenticationHerOkuApp.generateToken;
-
-public class GmiBankBaseUrl {
+public class GoRestBaseUrl {
     // This class is created to prevent repeated action in request like Base URL,
     // contain type,authorization etc.
    protected RequestSpecification spec;
@@ -15,10 +13,8 @@ public class GmiBankBaseUrl {
     //Then spec object will be assigned
     public void setUp(){
 
-        spec= new RequestSpecBuilder().
-                addHeader("Authorization","Bearer" + generateToken()).
-                setContentType(ContentType.JSON).
-                setBaseUri("https://www.gmibank.com/").
+        spec= new RequestSpecBuilder().setContentType(ContentType.JSON).
+                setBaseUri("https://gorest.co.in/public/v1/").
                 build();
 
     }
