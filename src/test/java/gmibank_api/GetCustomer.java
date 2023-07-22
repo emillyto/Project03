@@ -79,6 +79,7 @@ public class GetCustomer extends GmiBankBaseUrl {
      // Send the Request and get the response
      Response response = given(spec).get("{first}/{second}/{third}");
      response.prettyPrint();
+     ///1235
 
      // Do Assertion
      Customer actualData=ObjectMapperUtils.convertJsonToJava(response.asString(),Customer.class);
